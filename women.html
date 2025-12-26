@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women's Collection | THREAD</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #FAFAFA;
+            --card: #FFFFFF;
+            --black: #111111;
+            --gray: #666666;
+            --gray-light: #E5E5E5;
+            --accent: #D4A373;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--black);
+            font-family: 'DM Sans', sans-serif;
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            letter-spacing: 3px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--gray);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--black);
+        }
+
+        .page-header {
+            padding: 4rem 5%;
+            text-align: center;
+            background: white;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-header p {
+            color: var(--gray);
+        }
+
+        .filters {
+            display: flex;
+            justify-content: space-between;
+            padding: 1.5rem 5%;
+            background: white;
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--gray-light);
+            background: white;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.85rem;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--black);
+        }
+
+        .products {
+            padding: 3rem 5%;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .product-card {
+            cursor: pointer;
+        }
+
+        .product-image {
+            height: 400px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.02);
+        }
+
+        .product-info h4 {
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .product-info .price {
+            color: var(--gray);
+        }
+
+        .p1 {
+            background: linear-gradient(135deg, #F5E6D3, #E8D5C4);
+            color: rgba(0, 0, 0, 0.15);
+        }
+
+        .p2 {
+            background: linear-gradient(135deg, #2C3E50, #34495E);
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        .p3 {
+            background: linear-gradient(135deg, #1A1A1A, #333);
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        .p4 {
+            background: linear-gradient(135deg, #8B7355, #A0876C);
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        .p5 {
+            background: linear-gradient(135deg, #D4A373, #E8C9A8);
+            color: rgba(0, 0, 0, 0.1);
+        }
+
+        .p6 {
+            background: linear-gradient(135deg, #4A6741, #5C7A52);
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        .p7 {
+            background: linear-gradient(135deg, #8E4162, #A85577);
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        .p8 {
+            background: linear-gradient(135deg, #E5E5E5, #F0F0F0);
+            color: rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            padding: 3rem 5%;
+            text-align: center;
+            color: var(--gray);
+            background: var(--black);
+            color: #999;
+        }
+
+        @media (max-width: 1024px) {
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="../booking.html" class="logo">THREAD</a>
+        <ul class="nav-links">
+            <li><a href="new-arrivals.html">New Arrivals</a></li>
+            <li><a href="women.html" class="active">Women</a></li>
+            <li><a href="men.html">Men</a></li>
+            <li><a href="accessories.html">Accessories</a></li>
+            <li><a href="sale.html">Sale</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-header">
+        <h1>Women's Collection</h1>
+        <p>Effortlessly elegant pieces for every occasion</p>
+    </div>
+
+    <div class="filters">
+        <div class="filter-group">
+            <button class="filter-btn">Category ▾</button>
+            <button class="filter-btn">Size ▾</button>
+            <button class="filter-btn">Color ▾</button>
+        </div>
+        <div class="filter-group">
+            <button class="filter-btn">Sort by: Featured ▾</button>
+        </div>
+    </div>
+
+    <section class="products">
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image p1">👗</div>
+                <div class="product-info">
+                    <h4>Silk Midi Dress</h4>
+                    <p class="price">$185</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image p2">🧥</div>
+                <div class="product-info">
+                    <h4>Wool Blazer</h4>
+                    <p class="price">$245</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image p3">👖</div>
+                <div class="product-info">
+                    <h4>High-Rise Trousers</h4>
+                    <p class="price">$128</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image p4">👚</div>
+                <div class="product-info">
+                    <h4>Cashmere Sweater</h4>
+                    <p class="price">$195</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image p5">👕</div>
+                <div class="product-info">
+                    <h4>Linen Blouse</h4>
+                    <p class="price">$89</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image p6">🧥</div>
+                <div class="product-info">
+                    <h4>Trench Coat</h4>
+                    <p class="price">$320</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image p7">👗</div>
+                <div class="product-info">
+                    <h4>Wrap Dress</h4>
+                    <p class="price">$165</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image p8">👖</div>
+                <div class="product-info">
+                    <h4>Wide-Leg Jeans</h4>
+                    <p class="price">$118</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 THREAD. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

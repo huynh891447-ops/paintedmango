@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sale | THREAD</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #FAFAFA;
+            --black: #111111;
+            --gray: #666666;
+            --gray-light: #E5E5E5;
+            --red: #E53935;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--black);
+            font-family: 'DM Sans', sans-serif;
+            line-height: 1.6;
+        }
+
+        h1,
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            letter-spacing: 3px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--gray);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--black);
+        }
+
+        .nav-links a.active.sale {
+            color: var(--red);
+        }
+
+        .hero-banner {
+            padding: 6rem 5%;
+            text-align: center;
+            background: var(--red);
+            color: white;
+        }
+
+        .hero-banner h1 {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            letter-spacing: 5px;
+        }
+
+        .hero-banner p {
+            font-size: 1.3rem;
+        }
+
+        .products {
+            padding: 3rem 5%;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .product-card {
+            cursor: pointer;
+        }
+
+        .product-image {
+            height: 400px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            position: relative;
+        }
+
+        .sale-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: var(--red);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .product-info h4 {
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .product-info .price {
+            color: var(--gray);
+        }
+
+        .product-info .price .original {
+            text-decoration: line-through;
+            margin-right: 0.5rem;
+        }
+
+        .product-info .price .sale {
+            color: var(--red);
+            font-weight: 600;
+        }
+
+        .p1 {
+            background: linear-gradient(135deg, #F5E6D3, #E8D5C4);
+            color: rgba(0, 0, 0, 0.15);
+        }
+
+        .p2 {
+            background: linear-gradient(135deg, #2C3E50, #34495E);
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        .p3 {
+            background: linear-gradient(135deg, #1A1A1A, #333);
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        .p4 {
+            background: linear-gradient(135deg, #8B7355, #A0876C);
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        .p5 {
+            background: linear-gradient(135deg, #4A5568, #718096);
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        .p6 {
+            background: linear-gradient(135deg, #8E4162, #A85577);
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        footer {
+            padding: 3rem 5%;
+            text-align: center;
+            background: var(--black);
+            color: #999;
+        }
+
+        @media (max-width: 1024px) {
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero-banner h1 {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="../booking.html" class="logo">THREAD</a>
+        <ul class="nav-links">
+            <li><a href="new-arrivals.html">New Arrivals</a></li>
+            <li><a href="women.html">Women</a></li>
+            <li><a href="men.html">Men</a></li>
+            <li><a href="accessories.html">Accessories</a></li>
+            <li><a href="sale.html" class="active sale">Sale</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero-banner">
+        <h1>SALE</h1>
+        <p>Up to 50% off select styles</p>
+    </div>
+
+    <section class="products">
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image p1"><span class="sale-badge">-40%</span>👗</div>
+                <div class="product-info">
+                    <h4>Floral Maxi Dress</h4>
+                    <p class="price"><span class="original">$195</span><span class="sale">$117</span></p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image p2"><span class="sale-badge">-30%</span>🧥</div>
+                <div class="product-info">
+                    <h4>Puffer Jacket</h4>
+                    <p class="price"><span class="original">$275</span><span class="sale">$192</span></p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image p3"><span class="sale-badge">-50%</span>👖</div>
+                <div class="product-info">
+                    <h4>Classic Black Jeans</h4>
+                    <p class="price"><span class="original">$128</span><span class="sale">$64</span></p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image p4"><span class="sale-badge">-25%</span>🧣</div>
+                <div class="product-info">
+                    <h4>Wool Blend Scarf</h4>
+                    <p class="price"><span class="original">$85</span><span class="sale">$64</span></p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image p5"><span class="sale-badge">-35%</span>🧥</div>
+                <div class="product-info">
+                    <h4>Denim Trucker Jacket</h4>
+                    <p class="price"><span class="original">$165</span><span class="sale">$107</span></p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image p6"><span class="sale-badge">-40%</span>👚</div>
+                <div class="product-info">
+                    <h4>Silk Camisole</h4>
+                    <p class="price"><span class="original">$95</span><span class="sale">$57</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 THREAD. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

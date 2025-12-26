@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THREAD | Modern Clothing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #FAFAFA;
+            --card: #FFFFFF;
+            --black: #111111;
+            --gray: #666666;
+            --gray-light: #E5E5E5;
+            --accent: #D4A373;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--black);
+            font-family: 'DM Sans', sans-serif;
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+        }
+
+        .back-link {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            color: var(--black);
+            text-decoration: none;
+            font-size: 0.9rem;
+            z-index: 9999;
+            background: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            letter-spacing: 3px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--black);
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        /* Hero */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 80vh;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 4rem 8%;
+            background: white;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            color: var(--gray);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 400px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+        }
+
+        .btn-dark {
+            background: var(--black);
+            color: white;
+        }
+
+        .btn-dark:hover {
+            background: #333;
+        }
+
+        .hero-image {
+            background: linear-gradient(135deg, #E8D5C4, #D4A373);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Categories */
+        .categories {
+            padding: 5rem 5%;
+        }
+
+        .categories h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .category-card {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .category-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .category-card .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            color: white;
+        }
+
+        .category-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .category-card p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Featured Products */
+        .products {
+            padding: 5rem 5%;
+            background: white;
+        }
+
+        .products-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+
+        .products-header h2 {
+            font-size: 2.5rem;
+        }
+
+        .products-header a {
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .product-card {
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .product-image {
+            height: 350px;
+            background: var(--bg);
+            margin-bottom: 1rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-image .color-block {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover .color-block {
+            transform: scale(1.05);
+        }
+
+        .product-card:nth-child(1) .color-block {
+            background: #2C3E50;
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        .product-card:nth-child(2) .color-block {
+            background: #E8D5C4;
+            color: rgba(0, 0, 0, 0.1);
+        }
+
+        .product-card:nth-child(3) .color-block {
+            background: #1A1A1A;
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        .product-card:nth-child(4) .color-block {
+            background: #8B7355;
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        .product-info h4 {
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .product-info .price {
+            color: var(--gray);
+        }
+
+        /* Newsletter */
+        .newsletter {
+            padding: 5rem 5%;
+            text-align: center;
+            background: var(--black);
+            color: white;
+        }
+
+        .newsletter h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter p {
+            color: #999;
+            margin-bottom: 2rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+            gap: 1rem;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 1rem;
+            border: 1px solid #333;
+            background: transparent;
+            color: white;
+            font-family: inherit;
+        }
+
+        .newsletter-form input::placeholder {
+            color: #666;
+        }
+
+        .newsletter-form button {
+            padding: 1rem 2rem;
+            background: white;
+            color: var(--black);
+            border: none;
+            font-family: inherit;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem 5% 2rem;
+            background: var(--black);
+            color: #999;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h4 {
+            color: white;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-col a {
+            color: #999;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .footer-col a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 2rem;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 1024px) {
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .back-link {
+                top: auto;
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <a href="../index.html" class="back-link">← Back to PaintedMango</a>
+
+    <nav>
+        <div class="logo">THREAD</div>
+        <ul class="nav-links">
+            <li><a href="thread/new-arrivals.html">New Arrivals</a></li>
+            <li><a href="thread/women.html">Women</a></li>
+            <li><a href="thread/men.html">Men</a></li>
+            <li><a href="thread/accessories.html">Accessories</a></li>
+            <li><a href="thread/sale.html">Sale</a></li>
+        </ul>
+        <div class="nav-icons">
+            <span>🔍</span>
+            <span>👤</span>
+            <span>🛒</span>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Timeless Style, Modern Edge</h1>
+            <p>Discover our curated collection of contemporary essentials designed for the modern wardrobe.</p>
+            <a href="#" class="btn btn-dark">Shop New Arrivals</a>
+        </div>
+        <div class="hero-image">
+            👔
+        </div>
+    </section>
+
+    <section class="categories">
+        <h2>Shop by Category</h2>
+        <div class="category-grid">
+            <div class="category-card">
+                <div style="width:100%;height:100%;background:linear-gradient(135deg, #2C3E50, #34495E);"></div>
+                <div class="overlay">
+                    <h3>Outerwear</h3>
+                    <p>Jackets, Coats & More</p>
+                </div>
+            </div>
+            <div class="category-card">
+                <div style="width:100%;height:100%;background:linear-gradient(135deg, #E8D5C4, #D4A373);"></div>
+                <div class="overlay">
+                    <h3>Essentials</h3>
+                    <p>Tees, Tanks & Basics</p>
+                </div>
+            </div>
+            <div class="category-card">
+                <div style="width:100%;height:100%;background:linear-gradient(135deg, #1A1A1A, #333);"></div>
+                <div class="overlay">
+                    <h3>Bottoms</h3>
+                    <p>Pants, Jeans & Shorts</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="products">
+        <div class="products-header">
+            <h2>Best Sellers</h2>
+            <a href="#">View All →</a>
+        </div>
+        <div class="products-grid">
+            <a href="thread/product-overcoat.html" class="product-card">
+                <div class="product-image">
+                    <div class="color-block">🧥</div>
+                </div>
+                <div class="product-info">
+                    <h4>Classic Wool Overcoat</h4>
+                    <p class="price">$289</p>
+                </div>
+            </a>
+            <a href="thread/product-tee.html" class="product-card">
+                <div class="product-image">
+                    <div class="color-block">👕</div>
+                </div>
+                <div class="product-info">
+                    <h4>Relaxed Cotton Tee</h4>
+                    <p class="price">$48</p>
+                </div>
+            </a>
+            <a href="thread/product-chinos.html" class="product-card">
+                <div class="product-image">
+                    <div class="color-block">👖</div>
+                </div>
+                <div class="product-info">
+                    <h4>Slim Fit Chinos</h4>
+                    <p class="price">$98</p>
+                </div>
+            </a>
+            <a href="thread/product-scarf.html" class="product-card">
+                <div class="product-image">
+                    <div class="color-block">🧣</div>
+                </div>
+                <div class="product-info">
+                    <h4>Cashmere Scarf</h4>
+                    <p class="price">$125</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section class="newsletter">
+        <h2>Join the Thread</h2>
+        <p>Subscribe for exclusive access to new drops, sales, and style inspiration.</p>
+        <form class="newsletter-form">
+            <input type="email" placeholder="Enter your email">
+            <button type="submit">Subscribe</button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="#">New Arrivals</a></li>
+                    <li><a href="#">Women</a></li>
+                    <li><a href="#">Men</a></li>
+                    <li><a href="#">Accessories</a></li>
+                    <li><a href="#">Sale</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Help</h4>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Shipping & Returns</a></li>
+                    <li><a href="#">Size Guide</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>About</h4>
+                <ul>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Sustainability</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Follow Us</h4>
+                <ul>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Pinterest</a></li>
+                    <li><a href="#">TikTok</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 THREAD. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

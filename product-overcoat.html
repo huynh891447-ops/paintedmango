@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classic Wool Overcoat | THREAD</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #FAFAFA;
+            --card: #FFFFFF;
+            --black: #111111;
+            --gray: #666666;
+            --gray-light: #E5E5E5;
+            --accent: #D4A373;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--black);
+            font-family: 'DM Sans', sans-serif;
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .back-link {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            color: var(--black);
+            text-decoration: none;
+            font-size: 0.9rem;
+            z-index: 9999;
+            background: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            letter-spacing: 3px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--gray);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a:hover {
+            color: var(--black);
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .breadcrumb {
+            padding: 1.5rem 5%;
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+
+        .breadcrumb a {
+            color: var(--gray);
+        }
+
+        .breadcrumb a:hover {
+            color: var(--black);
+        }
+
+        .breadcrumb span {
+            margin: 0 0.5rem;
+        }
+
+        .product-page {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            padding: 2rem 5% 6rem;
+        }
+
+        .product-gallery {
+            position: sticky;
+            top: 120px;
+            height: fit-content;
+        }
+
+        .main-image {
+            width: 100%;
+            height: 600px;
+            background: linear-gradient(135deg, #2C3E50, #34495E);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10rem;
+            color: rgba(255, 255, 255, 0.15);
+            margin-bottom: 1rem;
+        }
+
+        .thumbnail-row {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            background: var(--gray-light);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            opacity: 0.6;
+            transition: opacity 0.3s;
+        }
+
+        .thumbnail:hover,
+        .thumbnail.active {
+            opacity: 1;
+            border: 2px solid var(--black);
+        }
+
+        .product-info h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            color: var(--black);
+            margin-bottom: 1.5rem;
+        }
+
+        .product-description {
+            color: var(--gray);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .size-selector {
+            margin-bottom: 2rem;
+        }
+
+        .size-selector h4 {
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+        }
+
+        .sizes {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .size-btn {
+            width: 50px;
+            height: 50px;
+            border: 1px solid var(--gray-light);
+            background: white;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .size-btn:hover {
+            border-color: var(--black);
+        }
+
+        .size-btn.active {
+            background: var(--black);
+            color: white;
+            border-color: var(--black);
+        }
+
+        .size-btn.disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .color-selector {
+            margin-bottom: 2rem;
+        }
+
+        .color-selector h4 {
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+        }
+
+        .colors {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .color-btn {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .color-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .color-btn.active {
+            border-color: var(--black);
+        }
+
+        .color-navy {
+            background: #2C3E50;
+        }
+
+        .color-charcoal {
+            background: #333;
+        }
+
+        .color-camel {
+            background: #C19A6B;
+        }
+
+        .quantity-selector {
+            margin-bottom: 2rem;
+        }
+
+        .quantity-selector h4 {
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .qty-btn {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--gray-light);
+            background: white;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .qty-value {
+            font-size: 1.1rem;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .btn-add-cart {
+            width: 100%;
+            padding: 1.2rem;
+            background: var(--black);
+            color: white;
+            border: none;
+            font-family: inherit;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            margin-bottom: 1rem;
+            transition: background 0.3s;
+        }
+
+        .btn-add-cart:hover {
+            background: #333;
+        }
+
+        .btn-wishlist {
+            width: 100%;
+            padding: 1.2rem;
+            background: white;
+            color: var(--black);
+            border: 1px solid var(--gray-light);
+            font-family: inherit;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-wishlist:hover {
+            border-color: var(--black);
+        }
+
+        .product-details {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--gray-light);
+        }
+
+        .detail-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .detail-section h4 {
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .detail-section p,
+        .detail-section ul {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        .detail-section ul {
+            padding-left: 1.2rem;
+        }
+
+        .detail-section li {
+            margin-bottom: 0.25rem;
+        }
+
+        footer {
+            padding: 3rem 5%;
+            text-align: center;
+            background: var(--black);
+            color: #999;
+        }
+
+        @media (max-width: 1024px) {
+            .product-page {
+                grid-template-columns: 1fr;
+            }
+
+            .product-gallery {
+                position: static;
+            }
+
+            .main-image {
+                height: 400px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .back-link {
+                top: auto;
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <a href="../booking.html" class="back-link">← Back to THREAD</a>
+
+    <nav>
+        <a href="../booking.html" class="logo">THREAD</a>
+        <ul class="nav-links">
+            <li><a href="new-arrivals.html">New Arrivals</a></li>
+            <li><a href="women.html">Women</a></li>
+            <li><a href="men.html">Men</a></li>
+            <li><a href="accessories.html">Accessories</a></li>
+            <li><a href="sale.html">Sale</a></li>
+        </ul>
+        <div class="nav-icons">
+            <span>🔍</span>
+            <span>👤</span>
+            <span>🛒</span>
+        </div>
+    </nav>
+
+    <div class="breadcrumb">
+        <a href="../booking.html">Home</a>
+        <span>/</span>
+        <a href="men.html">Men</a>
+        <span>/</span>
+        <span>Classic Wool Overcoat</span>
+    </div>
+
+    <main class="product-page">
+        <div class="product-gallery">
+            <div class="main-image">🧥</div>
+            <div class="thumbnail-row">
+                <div class="thumbnail active">🧥</div>
+                <div class="thumbnail">🧥</div>
+                <div class="thumbnail">🧥</div>
+                <div class="thumbnail">🧥</div>
+            </div>
+        </div>
+
+        <div class="product-info">
+            <h1>Classic Wool Overcoat</h1>
+            <p class="product-price">$289</p>
+            <p class="product-description">
+                Crafted from premium Italian wool, this timeless overcoat combines classic tailoring with modern
+                comfort. Features a notched lapel, single-breasted button closure, and a slightly relaxed fit that
+                layers effortlessly over suits or casual wear. The perfect investment piece for years to come.
+            </p>
+
+            <div class="color-selector">
+                <h4>Color: Navy</h4>
+                <div class="colors">
+                    <button class="color-btn color-navy active"></button>
+                    <button class="color-btn color-charcoal"></button>
+                    <button class="color-btn color-camel"></button>
+                </div>
+            </div>
+
+            <div class="size-selector">
+                <h4>Size</h4>
+                <div class="sizes">
+                    <button class="size-btn">XS</button>
+                    <button class="size-btn">S</button>
+                    <button class="size-btn active">M</button>
+                    <button class="size-btn">L</button>
+                    <button class="size-btn">XL</button>
+                    <button class="size-btn disabled">XXL</button>
+                </div>
+            </div>
+
+            <div class="quantity-selector">
+                <h4>Quantity</h4>
+                <div class="quantity-controls">
+                    <button class="qty-btn">−</button>
+                    <span class="qty-value">1</span>
+                    <button class="qty-btn">+</button>
+                </div>
+            </div>
+
+            <button class="btn-add-cart">Add to Cart</button>
+            <button class="btn-wishlist">♡ Add to Wishlist</button>
+
+            <div class="product-details">
+                <div class="detail-section">
+                    <h4>Product Details</h4>
+                    <ul>
+                        <li>100% Italian wool</li>
+                        <li>Fully lined interior</li>
+                        <li>Notched lapel collar</li>
+                        <li>Two front pockets, one interior pocket</li>
+                        <li>Single-breasted, 3-button closure</li>
+                    </ul>
+                </div>
+
+                <div class="detail-section">
+                    <h4>Fit & Care</h4>
+                    <p>Model is 6'1" wearing size M. Relaxed fit through body. Dry clean only.</p>
+                </div>
+
+                <div class="detail-section">
+                    <h4>Shipping & Returns</h4>
+                    <p>Free shipping on orders over $100. Free returns within 30 days.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 THREAD. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Size selector
+        document.querySelectorAll('.size-btn:not(.disabled)').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+
+        // Color selector
+        document.querySelectorAll('.color-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.color-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+
+        // Quantity controls
+        const qtyValue = document.querySelector('.qty-value');
+        document.querySelectorAll('.qty-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                let qty = parseInt(qtyValue.textContent);
+                if (btn.textContent === '−' && qty > 1) qty--;
+                if (btn.textContent === '+') qty++;
+                qtyValue.textContent = qty;
+            });
+        });
+    </script>
+</body>
+
+</html>

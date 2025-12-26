@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Arrivals | THREAD</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #FAFAFA;
+            --black: #111111;
+            --gray: #666666;
+            --gray-light: #E5E5E5;
+            --accent: #D4A373;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--black);
+            font-family: 'DM Sans', sans-serif;
+            line-height: 1.6;
+        }
+
+        h1,
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            letter-spacing: 3px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--gray);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--black);
+        }
+
+        .hero-banner {
+            padding: 6rem 5%;
+            text-align: center;
+            background: linear-gradient(135deg, #E8D5C4, #D4A373);
+            color: white;
+        }
+
+        .hero-banner h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-banner p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .products {
+            padding: 3rem 5%;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .product-card {
+            cursor: pointer;
+        }
+
+        .product-image {
+            height: 400px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            position: relative;
+        }
+
+        .new-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: var(--black);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .product-info h4 {
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .product-info .price {
+            color: var(--gray);
+        }
+
+        .p1 {
+            background: linear-gradient(135deg, #F5E6D3, #E8D5C4);
+            color: rgba(0, 0, 0, 0.15);
+        }
+
+        .p2 {
+            background: linear-gradient(135deg, #2C3E50, #34495E);
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        .p3 {
+            background: linear-gradient(135deg, #1A1A1A, #333);
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        .p4 {
+            background: linear-gradient(135deg, #8E7355, #A08566);
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        .p5 {
+            background: linear-gradient(135deg, #4A6741, #5C7A52);
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        .p6 {
+            background: linear-gradient(135deg, #8E4162, #A85577);
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        .p7 {
+            background: linear-gradient(135deg, #4A5568, #718096);
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        .p8 {
+            background: linear-gradient(135deg, #E5E5E5, #F0F0F0);
+            color: rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            padding: 3rem 5%;
+            text-align: center;
+            background: var(--black);
+            color: #999;
+        }
+
+        @media (max-width: 1024px) {
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero-banner h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="../booking.html" class="logo">THREAD</a>
+        <ul class="nav-links">
+            <li><a href="new-arrivals.html" class="active">New Arrivals</a></li>
+            <li><a href="women.html">Women</a></li>
+            <li><a href="men.html">Men</a></li>
+            <li><a href="accessories.html">Accessories</a></li>
+            <li><a href="sale.html">Sale</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero-banner">
+        <h1>New Arrivals</h1>
+        <p>Fresh drops for the new season</p>
+    </div>
+
+    <section class="products">
+        <h2 class="section-title">Just Landed</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image p1"><span class="new-badge">New</span>👗</div>
+                <div class="product-info">
+                    <h4>Spring Midi Dress</h4>
+                    <p class="price">$175</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image p2"><span class="new-badge">New</span>🧥</div>
+                <div class="product-info">
+                    <h4>Bomber Jacket</h4>
+                    <p class="price">$225</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image p3"><span class="new-badge">New</span>👖</div>
+                <div class="product-info">
+                    <h4>Relaxed Fit Denim</h4>
+                    <p class="price">$138</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image p4"><span class="new-badge">New</span>👕</div>
+                <div class="product-info">
+                    <h4>Organic Cotton Polo</h4>
+                    <p class="price">$68</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image p5"><span class="new-badge">New</span>🧥</div>
+                <div class="product-info">
+                    <h4>Field Jacket</h4>
+                    <p class="price">$285</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image p6"><span class="new-badge">New</span>👚</div>
+                <div class="product-info">
+                    <h4>Cropped Cardigan</h4>
+                    <p class="price">$145</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image p7"><span class="new-badge">New</span>🧥</div>
+                <div class="product-info">
+                    <h4>Utility Vest</h4>
+                    <p class="price">$165</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image p8"><span class="new-badge">New</span>👕</div>
+                <div class="product-info">
+                    <h4>Striped Tee</h4>
+                    <p class="price">$55</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 THREAD. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
